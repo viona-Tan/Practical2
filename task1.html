@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h1>Diploma Course</h1>
+
+
+<label for="Diploma">Choose you Diploma:</label>
+<select name="diploma" id="Diploma" onchange="runFunction()">
+    <option value="1">SpDip in WebDevelopment</option>
+    <option value="2">SpDip in AI</option>
+    <option value="3">SpDip in Media</option>
+</select>
+  
+<h2>Module</h2>
+<p id="m"></p>
+<script>
+class Module {
+  constructor(module) {
+    this.module = module;
+  }
+
+  modules() {
+    return " I am taking " + this.module;
+  }
+  }
+
+class Diploma extends Module {
+  constructor(diploma,module) {
+    super(module);
+    this.diploma = diploma;
+  }
+
+  diplomas()  {
+    document.getElementById("m").innerHTML = this.modules() + ", it will award " + this.diploma;
+  }
+  
+}
+ function runFunction() {
+
+  var x = document.getElementById("Diploma").value;
+  console.log(x);
+   
+   //x.modules();
+
+   switch (x) {
+      case "1":
+      webDev = new Diploma('SpDip in WebDevelopment', 'MAD');
+      webDev.diplomas();
+       break;
+      case "2":
+      AI = new Diploma('SpDip in AI', 'Python');
+      AI.diplomas();
+       break;
+      case "3":
+      Media = new Diploma('SpDip in Media', 'Unity');
+      Media.diplomas();
+       break;
+   }
+ }
+</script>
+
+</body>
+</html>
+

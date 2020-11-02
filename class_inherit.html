@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  
+<script>
+class Course {
+  constructor(dipname) {
+    this.dip = dipname;
+  }
+
+  taking() {
+    return 'I am taking ' + this.dip + ' diploma' ; /* SpDiploma can use the method in the Course object. */
+  }
+}
+class SpDiploma extends Course {   /* spdiploma inherit the Course object */
+  constructor(dipname, modname) {
+    super(dipname);
+    this.module= modname;
+  }  
+
+  show() {
+      return this.taking() + ', the module is ' + this.module
+  }
+}
+
+mycourse = new SpDiploma('DIT', 'MAD');
+mycourse.show();
+
+
+document.write(mycourse.show());
+</script>
+
+</body>
+</html>

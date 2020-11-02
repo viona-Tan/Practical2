@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event listener</title>
+</head>
+<body>
+    <h1>demo on events</h1>
+    <input type="text" value="hello world" id="teletubbies"></input>
+   <div id="result"> this is a text</div>
+    <!-- put a button -->
+    <button onclick="firstway()">button 1</button>
+    <p id="click"></p>
+    <button id="b2">button 2</button>
+    <button id="b3">button 3</button>
+    <script>
+    console.log("events demo started");
+
+    // 1st way to write listener
+    function firstway() {
+        document.getElementById("click").innerHTML = "button 1 clicked.";
+        //call a method in object
+        console.log(barney.sayHi());
+        // replace text/ display in div
+        document.getElementById("result").innerHTML = barney.sayHi();
+        //document.getElementById("result").innerHTML = barney.sayHi; => without () js will think u are asking for function
+    }
+    // 2nd way to write listener
+    function secondway() {
+        document.getElementById("click").innerHTML = "button 2 clicked.";
+        document.getElementById("result").innerHTML = banana.sayHi();
+    }
+      // register listener to the event (linking)
+    // carful do not add (), else it registers it as calling a function instead of registering to a function.
+
+    document.getElementById("b2").onclick = secondway;
+
+    // 3rd way to write listener 
+    function thirdway() {
+        document.getElementById("click").innerHTML = "button 3 clicked.";
+        //firstway(); u can call other function
+    }
+    document.getElementById("b3").addEventListener(
+        "click",// what event to listen to
+        thirdway // what function to run
+    );
+    // add more listener to the same button
+    function dosomething() {
+      let  ben10 = Math.random();
+      // get the text inside textfield
+      let tubbies = document.getElementById("teletubbies").value;
+      document.getElementById("result").innerHTML = tubbies + " " + ben10;
+    }
+
+    document.getElementById("b3").addEventListener(
+        "click",// what event to listen to
+        dosomething // what function to run
+    );
+
+    // add class
+        class childhoodFriend {
+            constructor(name){
+                // add properties
+                this.name = name;
+
+            }
+            // add a method
+            sayHi() {
+                return " hello, my name is " + this.name;
+            }
+        }
+        //create 3 objects, childhood friends
+        let barney = new childhoodFriend("barney and fwens");
+        let banana = new childhoodFriend("banana in pjs");
+    </script>
+</body>
+</html>
